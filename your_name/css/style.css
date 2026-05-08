@@ -1,0 +1,153 @@
+
+/* --- FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=IM+Fell+English:ital@0;1&display=swap');
+
+:root {
+    --yn-title-bg: #006400;
+    --win-gray: #c0c0c0;
+    --win-border-light: #ffffff;
+    --win-border-dark: #808080;
+}
+
+[x-cloak] { display: none !important; }
+
+body {
+    font-family: 'Courier Prime', monospace;
+}
+
+/* --- TEXTURES --- */
+.bg-texture-dots { 
+    background-color: #f4f4f4;
+    background-size: 16px 16px; 
+    background-image: radial-gradient(rgba(0,0,0,0.1) 1.5px, transparent 1.5px); 
+}
+.bg-texture-grid { 
+    background-color: #f4f4f4;
+    background-size: 20px 20px; 
+    background-image: linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px); 
+}
+.bg-texture-noise { 
+    background-color: #f4f4f4;
+    background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)" opacity="0.05"/%3E%3C/svg%3E'); 
+}
+.bg-texture-plain { background-color: #f4f4f4; }
+
+/* --- WIN 3.1 COMPONENTS --- */
+.win31-window {
+    background: var(--win-gray);
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0 #000;
+}
+
+.win31-titlebar {
+    color: white;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #000;
+    user-select: none;
+}
+
+.win31-close-btn {
+    background: var(--win-gray);
+    color: #000;
+    border: 2px solid #000;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    box-shadow: inset -1px -1px #404040, inset 1px 1px #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.win31-content {
+    background: #fff;
+    margin: 4px;
+    border: 2px solid #000;
+}
+
+.win31-btn {
+    background: var(--win-gray);
+    border: 2px solid #000;
+    padding: 4px 14px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    box-shadow: inset 1px 1px #fff, inset -1px -1px #808080;
+    text-transform: uppercase;
+}
+
+.win31-btn:active {
+    box-shadow: inset -1px -1px #fff, inset 1px 1px #808080;
+    transform: translate(1px, 1px);
+}
+
+.win31-btn-primary {
+    background: #006400; /* Fallback */
+    color: white;
+    border: 2px solid #000;
+    padding: 6px 18px;
+    font-weight: bold;
+    box-shadow: 3px 3px 0 #000;
+}
+
+.win31-input, .win31-textarea {
+    width: 100%;
+    border: 2px solid #000;
+    padding: 5px 8px;
+    font-size: 0.8rem;
+    box-shadow: inset 2px 2px 0 rgba(0,0,0,0.1);
+}
+
+/* --- UI ELEMENTS --- */
+.yn-badge { font-size: 0.6rem; color: white; padding: 2px 6px; font-weight: bold; border: 1px solid #000; }
+
+.folder-icon { display: flex; flex-direction: column; align-items: center; cursor: pointer; width: 80px; }
+.folder-shape { width: 50px; height: 35px; background: #000; position: relative; border-radius: 2px; }
+.folder-shape::before { content: ''; position: absolute; top: -6px; left: 0; width: 18px; height: 8px; background: #000; border-radius: 2px 2px 0 0; }
+.folder-label { font-size: 8px; font-weight: bold; margin-top: 4px; border: 1px solid #000; padding: 1px 4px; width: 78px; background: white; text-align: center; }
+
+.widget-box { border: 2px solid #000; background: #fff; box-shadow: 3px 3px 0 #000; padding: 8px; }
+.widget-title { background: #000; color: #fff; font-size: 0.65rem; padding: 2px 6px; margin-bottom: 6px; font-weight: bold; width: 100%; display: block; }
+
+.post-card { border: 2px solid #000; background: #fff; padding: 12px; box-shadow: 4px 4px 0 #000; }
+.post-title { font-family: 'Georgia', serif; font-size: 1.25rem; font-weight: bold; border-bottom: 2px solid #000; margin-bottom: 8px; }
+
+/* --- MARQUEE --- */
+.announcement-bar { white-space: nowrap; overflow: hidden; display: flex; align-items: center; }
+.marquee-text { display: inline-block; animation: marquee 20s linear infinite; }
+@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+/* --- COVER ANIMATION --- */
+.cover-letter { display: inline-block; opacity: 0; transform: translateY(-200px) rotate(20deg); }
+.animate-letters .cover-letter { animation: dropIn 0.8s forwards; }
+@keyframes dropIn { to { opacity: 1; transform: translate(0, 0) rotate(0deg); } }
+
+/* --- STICKERS --- */
+.yn-sticker img { filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2)); }
+.yn-sticker.is-editing { animation: wiggle 0.3s infinite; }
+@keyframes wiggle { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+
+/* --- GALLERY --- */
+.gallery-container { display: flex; height: 400px; background: #808080; border: 2px solid #000; }
+.gallery-stage { flex: 1; background: #000; display: flex; align-items: center; justify-content: center; }
+.film-strip { width: 100px; background: #c0c0c0; border-left: 2px solid #000; padding: 8px; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; }
+.strip-item { width: 80px; height: 80px; border: 2px solid #808080; cursor: pointer; object-fit: cover; background: #fff; }
+.strip-item.active { border: 2px solid #000; outline: 2px dotted #fff; outline-offset: -4px; }
+
+.color-swatch {
+    width: 38px;  /* Heto ang sukat para maging boxy siya */
+    height: 38px; /* Heto ang sukat */
+    border: 2px solid #000;
+    cursor: pointer;
+    position: relative;
+    box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 rgba(0,0,0,0.2); /* Para may konting Win31 depth */
+}
+
+.color-swatch:hover {
+    z-index: 10;
+    box-shadow: 2px 2px 0 #000;
+}
